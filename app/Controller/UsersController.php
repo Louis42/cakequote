@@ -7,6 +7,57 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+
+	/**
+	 * beforeFilter
+	 *
+	 *
+	 **/
+	
+
+
+	public 	function beforeFilter() {
+
+		parent::beforeFilter();
+		$this->Auth->allow('add');
+
+	}
+
+
+/**
+ * undocumented class variable
+ *
+ * 
+ **/
+
+
+
+public function login(){
+
+
+	 if ($this->request->is('post')) {
+
+        if ($this->Auth->login()) {
+            $this->redirect($this->Auth->redirect());
+        } else {
+            $this->Session->setFlash('Nom d\'user ou mot de passe invalide, réessayer');
+        }
+    }
+
+
+}
+
+
+
+public function logout(){
+
+	$this->redirect(
+		$this->Auth->logout()
+	);	
+}
+
+
+
 /**
  * index method
  *

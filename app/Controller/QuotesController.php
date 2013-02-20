@@ -191,3 +191,5 @@ class QuotesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 }
+
+
