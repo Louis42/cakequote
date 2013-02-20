@@ -40,7 +40,8 @@ class AppController extends Controller {
 		'Session',
 		'Auth' => array(
 				'loginRedirect' => array('controller' => 'quotes', 'actions' => 'index'),
-				'logoutRedirect' => array('controller' => 'quotes', 'actions' => 'index')
+				'logoutRedirect' => array('controller' => 'quotes', 'actions' => 'index'),
+				'authorize' => array('Controller')
 			)
 
 
@@ -79,11 +80,15 @@ class AppController extends Controller {
 	public function isAuthorized($user){
 
 		//default admin has access
+		if(isset($user['group_id']) && $user['group_id']== 1){
+			return true;
+		}
 
+		
 
 
 		//default : securised
-		return:false;
+		return false;
 	}
 
 
