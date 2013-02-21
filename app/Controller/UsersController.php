@@ -40,13 +40,43 @@ class UsersController extends AppController {
 					return true;
 				}
 				else {
-					$this->Session->setFlash('un poney est meilleur hackeur que toi petit malin');
+					$this->Session->setFlash('VOUS NE PASSEREZ PAS !!!');
 					return false;
 				}
-
 			
 		}
 		
+
+
+
+
+			if($this->action == 'connect'){
+
+				// users/edit/6, id is 6
+				$id = $this->request->params['pass'][0];
+
+				if(isset($user['id']) && $user['id'] >0){
+					return true;
+				}
+				else {
+					$this->Session->setFlash('une erreur est apparu');
+					return false;
+				}
+
+
+
+				
+			if($this->action == 'login'){
+				if(isset($user['group_id']) && $user['group_id']> 0){
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+
+			
+		}
 
 
 		return parent::isAuthorized($user);
