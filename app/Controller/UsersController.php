@@ -65,6 +65,7 @@ class UsersController extends AppController {
 
 
 
+
 				
 			if($this->action == 'login'){
 				if(isset($user['group_id']) && $user['group_id']> 0){
