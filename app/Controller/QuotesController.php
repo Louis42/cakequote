@@ -88,6 +88,15 @@ public function isAuthorized($user){
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Quote->create();
+
+
+
+			$this->request->data['Quote']['user_id']=$this->Auth->user('id');
+			//debug($this->Auth->user('id'));
+			//debug($this->request->data);
+			//die();
+
+
 			if ($this->Quote->save($this->request->data)) {
 				$this->Session->setFlash(__('The quote has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -239,5 +248,10 @@ public function isAuthorized($user){
 		$this->redirect(array('action' => 'index'));
 	}
 }
+
+
+
+
+
 
 
